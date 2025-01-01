@@ -48,6 +48,9 @@ export default function Home() {
               learn, and build a bright future. Through our programs and your support, we're making a difference
               in the lives of children and youth every day.
             </p>
+
+            
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veniam modi ipsum quae neque quisquam et, doloremque at laborum. Vero quos quo ullam officia iure enim eius expedita dicta nobis.</p>
           </div>
         </section>
       </AnimatedSection>
