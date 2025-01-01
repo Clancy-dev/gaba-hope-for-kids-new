@@ -1,99 +1,155 @@
-'use client'
+import React from 'react';
+import { FC } from 'react';
 
-import { useEffect, useRef } from 'react'
-import Link from 'next/link'
-import { motion, useAnimation, useInView } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import HeroSection from '@/components/HeroSection'
-import { BorderBeam } from '@/components/ui/border-beam'
-
-const AnimatedSection = ({ children }: { children: React.ReactNode }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-  const controls = useAnimation()
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start('visible')
-    }
-  }, [isInView, controls])
-
+const Page: FC = () => {
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 75 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.5, delay: 0.25 }}
-    >
-      {children}
-    </motion.div>
-  )
-}
+    <div className="page-container">
+      {/* The Background */}
+      <div className="background">
+        <div className="radio-lines"></div>
+        <div className="radio-lines"></div>
+        <div className="radio-lines"></div>
+      </div>
 
-export default function Home() {
-  return (
-    <div className="min-h-screen mt-[72px]">
-      <HeroSection />
+      {/* The Error Message */}
+      <div className="error-container">
+        <div className="error-text">
+          <h1>CRITICAL ERROR 404</h1>
+          <h2>FATAL SYSTEM FAILURE</h2>
+          <p className="warning">DANGER: Catastrophic malfunction detected.</p>
+          <p>
+            <span className="google">Google</span>: 
+            <span className="alert">WARNING: This website has been forcibly shut down due to critical security vulnerabilities and incomplete essential packages.</span>
+          </p>
+          <p className="alert">URGENT: Failure to address these issues will result in permanent termination of this domain.</p>
+        </div>
+      </div>
 
-      <AnimatedSection>
-        <section className="py-16 bg-yellow-100">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8 heading-font">Our Mission</h2>
-            <p className="text-xl text-center max-w-3xl mx-auto">
-              At Gaba Hope For Kids, we strive to create a world where every child has the opportunity to thrive,
-              learn, and build a bright future. Through our programs and your support, we're making a difference
-              in the lives of children and youth every day.
-            </p>
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-            
+        .page-container {
+          position: relative;
+          height: 100vh;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: white;
+          color: black;
+          overflow: hidden;
+        }
 
+        .background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: white;
+          z-index: -1;
+          display: flex;
+          flex-direction: column;
+        }
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veniam modi ipsum quae neque quisquam et, doloremque at laborum. Vero quos quo ullam officia iure enim eius expedita dicta nobis.</p>
-          </div>
-        </section>
-      </AnimatedSection>
+        .radio-lines {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          width: 100%;
+          background: linear-gradient(to bottom, 
+            rgba(255, 0, 0, 0.1), 
+            rgba(255, 255, 0, 0.1), 
+            rgba(128, 128, 128, 0.1), 
+            rgba(0, 255, 255, 0.1), 
+            rgba(255, 165, 0, 0.1)
+          );
+          animation: scan-lines 2s infinite linear;
+          opacity: 0.3;
+          z-index: -2;
+        }
 
-      <AnimatedSection>
-        <section className="py-16 relative">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12 heading-font">Our Programs</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-              {[
-                { title: 'Education Support', icon: '🎓', word:'We provide education support through quality learning resources, mentorship, and access to education for underprivileged children.' },
-                { title: 'Health & Nutrition', icon: '🍎', word:'We deliver healthcare assistance through nutritious sustenance, wellness programs, and medical accessibility for underserved children.'},
-                { title: 'Youth Empowerment', icon: '💪', word:'We empower disenfranchised youth through leadership development, personal growth initiatives, and community engagement opportunities.'},
-              ].map((program) => (
-                <div key={program.title} className="relative text-center p-6 shadow-mdflex min-h-[250px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl ">
-                  <BorderBeam size={250} duration={12} delay={9} /> 
-                  <div className="text-4xl mb-4">{program.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{program.title}</h3>
-                  <p>{program.word}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+        .error-container {
+          text-align: center;
+          z-index: 1;
+          position: relative;
+        }
 
-      <AnimatedSection>
-        <section className="py-16 bg-yellow-100 text-black">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-8">Make a Difference Today</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Your support can change lives. Join us in our mission to bring hope and opportunities to children in need.
-            </p>
-            <div className="flex justify-center space-x-4">
-  
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+        .error-text h1 {
+          font-size: 5rem;
+          font-family: 'Courier New', Courier, monospace;
+          font-weight: bold;
+          color: #ff0000;
+          text-shadow: 
+            0 0 20px #ff0000, 
+            0 0 30px #ff0000, 
+            0 0 40px #ff0000, 
+            0 0 50px #ff0000;
+          margin-bottom: 20px;
+          animation: flicker 0.5s infinite alternate;
+        }
+
+        .error-text h2 {
+          font-size: 3rem;
+          font-family: 'Courier New', Courier, monospace;
+          font-weight: bold;
+          color: #ff8c00;
+          text-shadow: 
+            0 0 20px #ff8c00, 
+            0 0 30px #ff8c00, 
+            0 0 40px #ff8c00;
+          animation: pulse 1s infinite alternate;
+        }
+
+        .error-text p {
+          font-size: 1.5rem;
+          font-family: 'Courier New', Courier, monospace;
+          color: #333;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+
+        .warning {
+          color: #ff4500;
+        }
+
+        .alert {
+          color: #ff1493;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        .google {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 2rem;
+          background: linear-gradient(to right, #4285f4, #ea4335, #fbbc05, #34a853);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          display: inline-block;
+          padding-right: 5px;
+        }
+
+        @keyframes scan-lines {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-100%); }
+        }
+
+        @keyframes flicker {
+          0% { opacity: 0.8; }
+          100% { opacity: 1; }
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          100% { transform: scale(1.05); }
+        }
+      `}</style>
     </div>
-  )
-}
+  );
+};
+
+export default Page;
 
