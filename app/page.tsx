@@ -33,7 +33,7 @@ const Page: React.FC = () => {
             </span>
           </p>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-mono text-pink-600 font-bold uppercase mt-5">
-            URGENT: Failure to address these issues will result in permanent termination of this domain.
+            URGENT: Failure to address these issues will result in permanent termination of this website.
           </p>
         </div>
       </div>
