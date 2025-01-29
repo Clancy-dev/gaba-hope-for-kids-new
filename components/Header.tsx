@@ -9,9 +9,9 @@ import { cn } from '@/lib/utils'
 
 const links = [
   { name: 'Home', icon: <Home className="w-4 h-4" />, href: '/' },
+  { name: 'About', icon: <Info className="w-4 h-4" />, href: '/about' },
   { name: 'What we do', icon: <Briefcase className="w-4 h-4" />, href: '/programs' },
   { name: 'Gallery', icon: <LucideImage className="w-4 h-4" />, href: '/gallery' },
-  { name: 'About', icon: <Info className="w-4 h-4" />, href: '/about' },
   { 
     name: 'Donate', 
     icon: (

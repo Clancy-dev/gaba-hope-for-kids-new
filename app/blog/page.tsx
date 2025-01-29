@@ -3,9 +3,10 @@ import LetterPullup from '@/components/ui/letter-pullup'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'GABA Hope for Kids Blog',
-  description: 'Inspiring stories and insights about children and youth',
-}
+  title: "Blog | Gaba Hope For Kids",
+  description:
+    "Stay updated with the latest news, stories, and updates from Gaba Hope For Kids. Read about our initiatives, success stories, and how we are making a difference in the lives of children in Uganda.",
+};
 
 export default function Home() {
   return (
